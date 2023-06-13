@@ -1,0 +1,39 @@
+import turtle
+
+def dibujar_rectangulo(ancho, largo, color):
+    turtle.fillcolor(color)
+    turtle.begin_fill()
+    for _ in range(2):
+        turtle.forward(largo)
+        turtle.right(90)
+        turtle.forward(ancho)
+        turtle.right(90)
+    turtle.end_fill()
+
+def crear_plano(ancho, largo, secciones):
+    turtle.speed(0)
+    turtle.setup(width=800, height=600)
+    turtle.title("Plano de negocio")
+    
+    for seccion in secciones:
+        x, y, seccion_ancho, seccion_largo, color = seccion
+        turtle.penup()
+        turtle.goto(x, y)
+        turtle.pendown()
+        dibujar_rectangulo(seccion_ancho, seccion_largo, color)
+
+    turtle.hideturtle()
+    turtle.done()
+
+# Ejemplo de uso
+ancho = 200
+largo = 150
+
+# Definir las secciones del negocio: [x, y, ancho, largo, color]
+secciones = [
+    [0, 0, 100, 100, "blue"],    # Ejemplo de una sección azul en las coordenadas (0, 0) con un ancho de 100 y largo de 100
+    [100, 100, 100, 50, "red"],  # Ejemplo de una sección roja en las coordenadas (100, 100) con un ancho de 100 y largo de 50
+]
+
+# Crear el plano
+crear_plano(ancho, largo, secciones)
